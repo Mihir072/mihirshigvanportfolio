@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alex Rivera - Flutter Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "primary": "#c0c1ff",
+                        "tertiary-fixed": "#b6ebff",
+                        "tertiary-fixed-dim": "#47d6ff",
+                        "on-tertiary-container": "#002e3a",
+                        "on-secondary": "#490080",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#464554",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed": "#07006c",
+                        "tertiary-container": "#009ec0",
+                        "on-secondary-container": "#d6a9ff",
+                        "primary-container": "#8083ff",
+                        "tertiary": "#47d6ff",
+                        "secondary-fixed": "#f0dbff",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-container-highest": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#494bd6",
+                        "surface-dim": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "surface": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary": "#003543",
+                        "on-tertiary-fixed": "#001f28",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#e5e2e1",
+                        "outline": "#908fa0",
+                        "on-primary-container": "#0d0096",
+                        "surface-tint": "#c0c1ff",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-primary": "#1000a9",
+                        "background": "#131313",
+                        "surface-bright": "#3a3939",
+                        "secondary": "#ddb7ff",
+                        "secondary-container": "#6f00be"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "md": "24px",
+                        "lg": "48px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "xl": "80px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Inter"],
+                        "subheading": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-md": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "subheading": ["14px", { lineHeight: "20px", letterSpacing: "0.15em", fontWeight: "500" }],
+                        "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "0em", fontWeight: "400" }],
+                        "display-lg": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "display-lg-mobile": ["40px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(28, 27, 27, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(70, 69, 84, 0.3);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #c0c1ff, #ddb7ff);
+            color: #1000a9;
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-ghost {
+            background: rgba(28, 27, 27, 0.2);
+            border: 1px solid rgba(70, 69, 84, 0.5);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        .btn-ghost:hover {
+            background: rgba(28, 27, 27, 0.5);
+            transform: translateY(-2px);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(192, 193, 255, 0.3);
+            border-color: rgba(192, 193, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary/30 selection:text-primary overflow-x-hidden">
+<!-- Global Background Shader -->
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+<!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.y, u_resolution.x);
+    
+    // Background deep space
+    vec3 color = vec3(0.02, 0.02, 0.05);
+    
+    // Animated gradient pulse
+    float pulse = sin(u_time * 0.5) * 0.5 + 0.5;
+    vec3 accentBlue = vec3(0.0, 0.5, 1.0);
+    vec3 accentPurple = vec3(0.5, 0.0, 1.0);
+    color += mix(accentBlue, accentPurple, uv.x) * 0.05 * pulse;
+
+    // Moving particles
+    for(float i = 0.0; i < 40.0; i++) {
+        float t = u_time * (0.1 + hash(vec2(i, 0.0)) * 0.2);
+        vec2 pos = vec2(
+            sin(t + i * 1.5) * 1.2,
+            cos(t * 0.8 + i) * 0.8
+        );
+        
+        // Mouse influence
+        vec2 m = (u_mouse / u_resolution) * 2.0 - 1.0;
+        pos += m * 0.1 * hash(vec2(i, 1.0));
+
+        float dist = length(p - pos);
+        float size = 0.002 + hash(vec2(i, 2.0)) * 0.005;
+        float brightness = smoothstep(size, 0.0, dist);
+        
+        vec3 pCol = mix(accentBlue, accentPurple, hash(vec2(i, 3.0)));
+        color += pCol * brightness * (0.5 + 0.5 * sin(u_time + i));
+    }
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_2 -->
+</div>
+<!-- Navigation (TopAppBar) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-outline-variant/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] transition-all duration-300 ease-out">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary tracking-tighter">FLUTTER.DEV</div>
+<nav class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-subheading text-subheading" href="#work">Work</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-subheading text-subheading" href="#skills">Skills</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-subheading text-subheading" href="#about">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-subheading text-subheading" href="#contact">Contact</a>
+</nav>
+<a class="hidden md:inline-flex items-center justify-center px-md py-sm rounded-lg btn-gradient font-label-sm text-label-sm" href="#contact">Hire Me</a>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="relative z-10 pt-32 pb-xl px-gutter max-w-container-max mx-auto space-y-32">
+<!-- Hero Section -->
+<section class="flex flex-col lg:flex-row items-center justify-between gap-xl min-h-[716px]">
+<div class="flex-1 space-y-lg z-10">
+<div class="space-y-sm">
+<p class="font-subheading text-subheading text-primary uppercase tracking-widest">Alex Rivera • Flutter Developer</p>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">Crafting Seamless Mobile Experiences</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Building high-performance, visually stunning cross-platform applications with precision and futuristic flair.</p>
+<div class="flex flex-wrap gap-md">
+<a class="px-lg py-md rounded-xl btn-gradient font-label-sm text-label-sm flex items-center gap-2" href="#work">
+                        View Projects <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</a>
+<a class="px-lg py-md rounded-xl btn-ghost text-on-surface font-label-sm text-label-sm" href="#contact">Contact Me</a>
+</div>
+</div>
+<div class="flex-1 w-full h-[400px] lg:h-[600px] relative rounded-2xl overflow-hidden glass-panel">
+<!-- STITCH_THREEJS_START:ANIMATION_3 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_3" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_3');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0x6366f1, 2);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+const pointLight2 = new THREE.PointLight(0xa855f7, 2);
+pointLight2.position.set(-5, -5, 5);
+scene.add(pointLight2);
+
+// Create a futuristic "Flutter" inspired logo silhouette using 3D blocks
+const group = new THREE.Group();
+
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshPhongMaterial({ 
+    color: 0x6366f1,
+    shininess: 100,
+    transparent: true,
+    opacity: 0.9
+});
+
+// Mock Flutter Logo shape using 3 cubes in a slanted pattern
+const cube1 = new THREE.Mesh(geometry, material);
+cube1.position.set(0, 0.6, 0);
+cube1.rotation.z = Math.PI / 4;
+group.add(cube1);
+
+const cube2 = new THREE.Mesh(geometry, material);
+cube2.position.set(0.5, 0, 0);
+cube2.rotation.z = Math.PI / 4;
+group.add(cube2);
+
+const cube3 = new THREE.Mesh(geometry, material);
+cube3.position.set(1, -0.6, 0);
+cube3.rotation.z = Math.PI / 4;
+group.add(cube3);
+
+scene.add(group);
+
+camera.position.z = 5;
+
+// Animation
+const animate = () => {
+    requestAnimationFrame(animate);
+    
+    group.rotation.y += 0.005;
+    group.rotation.x += 0.002;
+    
+    // Floating motion
+    group.position.y = Math.sin(Date.now() * 0.001) * 0.2;
+    
+    renderer.render(scene, camera);
+};
+
+animate();
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+});
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_3 -->
+</div>
+</section>
+<!-- About Section -->
+<section class="scroll-mt-32" id="about">
+<div class="glass-panel rounded-2xl p-xl max-w-4xl mx-auto text-center space-y-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">About Me</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    I specialize in building beautiful, performant cross-platform apps. My approach combines robust engineering practices with a deep appreciation for fluid motion and cinematic user interfaces. I bridge the gap between technical complexity and intuitive design.
+                </p>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="scroll-mt-32 space-y-xl" id="skills">
+<div class="text-center space-y-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Technical Arsenal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Core competencies and technologies.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-md">
+<!-- Skill Badges -->
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center gap-sm glow-hover transition-all duration-300 transform hover:scale-105 cursor-default group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-sm text-label-sm text-on-surface">Flutter</span>
+</div>
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center gap-sm glow-hover transition-all duration-300 transform hover:scale-105 cursor-default group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">code</span>
+<span class="font-label-sm text-label-sm text-on-surface">Dart</span>
+</div>
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center gap-sm glow-hover transition-all duration-300 transform hover:scale-105 cursor-default group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">database</span>
+<span class="font-label-sm text-label-sm text-on-surface">Firebase</span>
+</div>
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center gap-sm glow-hover transition-all duration-300 transform hover:scale-105 cursor-default group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">api</span>
+<span class="font-label-sm text-label-sm text-on-surface">Spring Boot</span>
+</div>
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center gap-sm glow-hover transition-all duration-300 transform hover:scale-105 cursor-default group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">integration_instructions</span>
+<span class="font-label-sm text-label-sm text-on-surface">React.js</span>
+</div>
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center gap-sm glow-hover transition-all duration-300 transform hover:scale-105 cursor-default group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 1;">storage</span>
+<span class="font-label-sm text-label-sm text-on-surface">PostgreSQL</span>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="scroll-mt-32 space-y-xl" id="work">
+<div class="text-center space-y-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Selected Projects</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">A glimpse into my recent development work.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Project 1 -->
+<article class="glass-panel rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors duration-500">
+<div class="h-48 relative overflow-hidden bg-surface-container">
+<div class="bg-cover bg-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, futuristic mobile finance application interface displayed on a modern smartphone mockup. The design features a dark mode aesthetic with deep obsidian backgrounds, glowing cyan and purple glassmorphic charts, and crisp white sans-serif typography. The lighting is moody and cinematic, highlighting the rounded corners and subtle depth of the UI elements." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAxEkHRprT0WB8rDYVzEQQopf7WxCbefXhVEX5zZM94SwkQHZaaMx4tC397FLP72Cpo77BsZesgQ2hY6HKUhqkNXnxVelne2mjDIP6hUb5o3wR4zorWWIVlTCrVmrnx-3ovfKGsTegtTaWTkE9Qt76ck-386gqBgAvJNBbOJTNKiL2wlpN-bKMat77J2xgBfCk673O_0mLbqekEOALvejtD0kI2Do0wTAHdZ53KIQ-I2Po7KA8RNjgjdQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-lg space-y-md">
+<h3 class="font-headline-md text-headline-md-mobile md:text-body-lg text-on-surface">Zenith Finance App</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">A comprehensive personal finance tracker built with Flutter and Firebase, featuring real-time data synchronization and complex animated charts.</p>
+<div class="flex gap-sm pt-sm">
+<span class="px-3 py-1 rounded-full bg-surface-glass border border-outline-variant/30 font-subheading text-label-sm text-primary">Flutter</span>
+<span class="px-3 py-1 rounded-full bg-surface-glass border border-outline-variant/30 font-subheading text-label-sm text-primary">Firebase</span>
+</div>
+</div>
+</article>
+<!-- Project 2 -->
+<article class="glass-panel rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors duration-500">
+<div class="h-48 relative overflow-hidden bg-surface-container">
+<div class="bg-cover bg-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A dynamic, neon-lit social media mobile app interface showcased in a high-end 3D presentation. The screen displays a grid of vibrant user-generated content over a dark, frosted glass background. The color palette heavily utilizes deep blacks contrasted with bright, saturated pinks and blues. The overall vibe is energetic and modern." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCh_8vqW9eOxd_8CSRnilh8BozpUNjG2kPpTB06JRr64TjVJmRleHKpmk30caUQ6voPvU0k_rUZ6YMi-ujxwMCUQIKh496mNwa1yj8oKilALJbUyCCaM3tVkX40b6lWmBd-vz_-yOC5rvdaTH6dbPMaUjJhDA0Uil1Io0CiuSKLMSneTa8pbd9W7ZSHqF6IxSDx18PG7xsquP2ZwEo1ozGLY8ldNS3lcBfEHx11D1a2Ckx9vuLf50RLBQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-lg space-y-md">
+<h3 class="font-headline-md text-headline-md-mobile md:text-body-lg text-on-surface">Aurora Social Cloud</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">A media-rich social platform prioritizing fluid animations and high-performance image rendering, built on a custom Spring Boot backend.</p>
+<div class="flex gap-sm pt-sm">
+<span class="px-3 py-1 rounded-full bg-surface-glass border border-outline-variant/30 font-subheading text-label-sm text-primary">Dart</span>
+<span class="px-3 py-1 rounded-full bg-surface-glass border border-outline-variant/30 font-subheading text-label-sm text-primary">Spring Boot</span>
+</div>
+</div>
+</article>
+<!-- Project 3 -->
+<article class="glass-panel rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors duration-500">
+<div class="h-48 relative overflow-hidden bg-surface-container">
+<div class="bg-cover bg-center w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="An elegant, minimalist e-commerce mobile app design featuring luxury products. The UI is set against a very dark, matte gray background with subtle translucent overlays. Product cards have soft inner glows. The typography is precise and thin. The scene is lit softly from above, giving a premium, gallery-like feel to the interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMxkldioeD9avfWJxEF60tP3f-qz5S8uRjGYJLm9ezywt9RjKqV-q76cFxHLS_-2Jx8JP3tbiWnCnx0KItVsy8v8BrTNnNBCCzKfLfaQITIcze1FfaT_9yH0kvqZhWV1xvlj4LtuwLRNyyDGahY-bQR32Z7sq5v91x7SFMMsIEj9gjYMhjonSaJWhbTqHVbKTGlWYTDS2kMoJ97uOHhjxD2A_c9HpCZ-GJEJ9D1hYcfRVk9jweMmo9rg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-lg space-y-md">
+<h3 class="font-headline-md text-headline-md-mobile md:text-body-lg text-on-surface">Nexus E-commerce</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">A polished shopping experience with complex state management, seamless cart animations, and integrated secure payment gateways.</p>
+<div class="flex gap-sm pt-sm">
+<span class="px-3 py-1 rounded-full bg-surface-glass border border-outline-variant/30 font-subheading text-label-sm text-primary">Flutter</span>
+<span class="px-3 py-1 rounded-full bg-surface-glass border border-outline-variant/30 font-subheading text-label-sm text-primary">PostgreSQL</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="scroll-mt-32 max-w-2xl mx-auto space-y-lg" id="contact">
+<div class="text-center space-y-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Initiate Connection</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Let's discuss your next ambitious project.</p>
+</div>
+<form class="glass-panel p-lg rounded-2xl space-y-md">
+<div>
+<label class="block font-subheading text-subheading text-on-surface-variant mb-xs" for="name">Name</label>
+<input class="w-full bg-surface-dim border border-outline-variant/30 rounded-lg px-md py-sm text-on-surface focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors outline-none font-body-md text-body-md" id="name" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="block font-subheading text-subheading text-on-surface-variant mb-xs" for="email">Email</label>
+<input class="w-full bg-surface-dim border border-outline-variant/30 rounded-lg px-md py-sm text-on-surface focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors outline-none font-body-md text-body-md" id="email" placeholder="john@example.com" type="email"/>
+</div>
+<div>
+<label class="block font-subheading text-subheading text-on-surface-variant mb-xs" for="message">Message</label>
+<textarea class="w-full bg-surface-dim border border-outline-variant/30 rounded-lg px-md py-sm text-on-surface focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors outline-none font-body-md text-body-md resize-none" id="message" placeholder="How can I help?" rows="4"></textarea>
+</div>
+<button class="w-full btn-gradient py-md rounded-xl font-label-sm text-label-sm uppercase tracking-widest mt-md" type="submit">Send Transmission</button>
+</form>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-md">
+<div class="font-subheading text-on-surface">© 2024 Built with Flutter &amp; Precision</div>
+<div class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors opacity-80 hover:opacity-100 font-label-sm text-label-sm flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[18px]">code</span> Github
+                </a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors opacity-80 hover:opacity-100 font-label-sm text-label-sm flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[18px]">work</span> LinkedIn
+                </a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors opacity-80 hover:opacity-100 font-label-sm text-label-sm flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span> Twitter
+                </a>
+<a class="text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors opacity-80 hover:opacity-100 font-label-sm text-label-sm flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span> Resume
+                </a>
+</div>
+</div>
+</footer>
+</body></html>
